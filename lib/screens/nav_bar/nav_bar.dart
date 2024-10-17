@@ -1,8 +1,10 @@
 import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:messaging/screens/home_screen/chat/conversation_screen/conversation.dart';
-import 'package:messaging/screens/home_screen/nav_bar/all_images/all_images.dart';
-import 'package:messaging/screens/home_screen/profile_screen/profile_screen.dart';
+import 'package:messaging/screens/nav_bar/add_images/add_images.dart';
+import 'package:messaging/screens/nav_bar/all_images/all_images.dart';
+import 'package:messaging/screens/nav_bar/chat/conversation_screen/conversation.dart';
+import 'package:messaging/screens/nav_bar/home_screen/home_sccreen.dart';
+import 'package:messaging/screens/nav_bar/profile_screen/profile_screen.dart';
 
 class NavBar extends StatefulWidget {
   const NavBar({super.key});
@@ -20,10 +22,11 @@ class _NavBarState extends State<NavBar> {
     Icons.person,
   ];
   final List _destination = <Widget>[
-    Container(), //destination screen
+    const HomeScreen(), //destination screen
     const AllImages(), //destination screen
     const ConversationScreen(),
     const ProfileScreen(),
+    const AddImages(),
   ];
   @override
   Widget build(BuildContext context) {
@@ -31,8 +34,17 @@ class _NavBarState extends State<NavBar> {
       body: _destination[_bottomNavIndex], //destination screen
       floatingActionButton: FloatingActionButton(
         shape: const CircleBorder(),
+        backgroundColor: const Color(0xff472121),
+        child: const Icon(
+          Icons.add,
+          color: Color(0xffe6c8b4),
+        ),
         //params
-        onPressed: () {},
+        onPressed: () {
+          setState(() {
+            _bottomNavIndex = 4; // Navigate to the new screen index in the list
+          });
+        },
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: AnimatedBottomNavigationBar.builder(
@@ -47,7 +59,8 @@ class _NavBarState extends State<NavBar> {
             return Icon(
               iconList[index],
               size: 24,
-              color: isActive ? Colors.amber : Colors.black,
+              color:
+                  isActive ? const Color(0xff472121) : const Color(0xffe6c8b4),
             );
           }),
     );

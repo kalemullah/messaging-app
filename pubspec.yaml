@@ -43,8 +43,9 @@ dependencies:
   image_picker: ^1.1.2
   chat_bubbles: ^1.6.0
   intl: ^0.19.0
-  flutter_staggered_grid_view: ^0.3.0
   animated_bottom_navigation_bar: ^1.3.3
+  carousel_slider: ^5.0.0
+  firebase_storage: ^12.3.3
 
 dev_dependencies:
   flutter_test:

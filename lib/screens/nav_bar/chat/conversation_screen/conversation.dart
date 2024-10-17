@@ -3,7 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
-import 'package:messaging/screens/home_screen/chat/single_chat_screen/single_chat_screen.dart';
+import 'package:messaging/screens/nav_bar/chat/single_chat_screen/single_chat_screen.dart';
 
 class ConversationScreen extends StatefulWidget {
   const ConversationScreen({super.key});
@@ -29,8 +29,15 @@ class _ConversationScreenState extends State<ConversationScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xffe6c8b4).withOpacity(.8),
       appBar: AppBar(
-        title: const Text('Conversation'),
+        backgroundColor: Color(0xffe6c8b4).withOpacity(.8),
+        title: Text(
+          'Conversation',
+          style: TextStyle(
+            color: Color(0xff472121),
+          ),
+        ),
         centerTitle: true,
       ),
       body: Column(
@@ -52,8 +59,11 @@ class _ConversationScreenState extends State<ConversationScreen> {
                         return Padding(
                           padding: EdgeInsets.symmetric(horizontal: 5.w),
                           child: Card(
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10)),
+                            color: Color(0xff472121),
                             child: ListTile(
-                              tileColor: Colors.grey[200],
+                              // tileColor: Colors.grey[200],
                               onTap: () {
                                 Navigator.push(
                                     context,
@@ -65,9 +75,28 @@ class _ConversationScreenState extends State<ConversationScreen> {
                                                   ['recievername'],
                                             )));
                               },
-                              title: Text(chatlist[index]['recievername']),
-                              subtitle: Text(chatlist[index]['message']),
-                              trailing: Text(getTime(chatlist[index]['time'])),
+                              title: Text(
+                                chatlist[index]['recievername'],
+                                style: TextStyle(
+                                  fontSize: 18.sp,
+                                  color: Color(0xffe6c8b4),
+                                ),
+                              ),
+                              subtitle: Text(
+                                chatlist[index]['message'],
+                                style: TextStyle(
+                                  color: Color(0xffe6c8b4),
+                                ),
+                              ),
+                              trailing: Text(
+                                getTime(
+                                  chatlist[index]['time'],
+                                ),
+                                style: TextStyle(
+                                  fontSize: 16.sp,
+                                  color: Color(0xffe6c8b4),
+                                ),
+                              ),
                             ),
                           ),
                         );

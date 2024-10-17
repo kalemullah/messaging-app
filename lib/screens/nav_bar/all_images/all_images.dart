@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
 class AllImages extends StatefulWidget {
   const AllImages({super.key});
@@ -12,20 +11,15 @@ class _AllImagesState extends State<AllImages> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: AlignedGridView.count(
-      crossAxisCount: 2,
-      mainAxisSpacing: 2,
-      crossAxisSpacing: 2,
-      itemBuilder: (context, index) {
-        return StaggeredGridTile.count(
-          crossAxisCellCount: 2,
-          mainAxisCellCount: 2,
-          child: BackGroundTile(
-              backgroundColor: Colors.deepPurpleAccent,
-              icondata: Icons.music_note),
-        );
-      },
-    ));
+        body: GridView.builder(
+            gridDelegate:
+                SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
+            itemBuilder: (context, index) {
+              return BackGroundTile(
+                backgroundColor: Colors.blue,
+                icondata: Icons.image,
+              );
+            }));
   }
 }
 

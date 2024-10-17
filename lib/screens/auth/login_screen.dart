@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:messaging/custom_widget/custom_button.dart';
 import 'package:messaging/screens/auth/sign_up_screen.dart';
-import 'package:messaging/screens/home_screen/show_all_user.dart';
+import 'package:messaging/screens/nav_bar/show_all_user.dart';
 import 'package:messaging/utils/popup.dart';
 
 class LoginScreen extends StatefulWidget {

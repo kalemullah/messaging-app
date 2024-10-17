@@ -1,8 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:messaging/screens/auth/sign_up_screen.dart';
-import 'package:messaging/screens/home_screen/nav_bar/nav_bar.dart';
-import 'package:messaging/screens/home_screen/show_all_user.dart';
+import 'package:messaging/screens/nav_bar/nav_bar.dart';
+import 'package:messaging/screens/nav_bar/show_all_user.dart';
 
 class SplashService {
   void islogin(BuildContext context) {

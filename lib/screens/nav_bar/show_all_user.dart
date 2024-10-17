@@ -2,8 +2,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:messaging/screens/auth/login_screen.dart';
-import 'package:messaging/screens/home_screen/chat/conversation_screen/conversation.dart';
-import 'package:messaging/screens/home_screen/chat/single_chat_screen/single_chat_screen.dart';
+import 'package:messaging/screens/nav_bar/chat/conversation_screen/conversation.dart';
+import 'package:messaging/screens/nav_bar/chat/single_chat_screen/single_chat_screen.dart';
 import 'package:messaging/utils/popup.dart';
 
 class ShowData extends StatefulWidget {
