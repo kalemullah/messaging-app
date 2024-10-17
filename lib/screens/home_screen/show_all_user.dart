@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:messaging/screens/auth/login_screen.dart';
+import 'package:messaging/screens/home_screen/chat/conversation_screen/conversation.dart';
 import 'package:messaging/screens/home_screen/chat/single_chat_screen/single_chat_screen.dart';
 import 'package:messaging/utils/popup.dart';
 
@@ -24,12 +25,22 @@ class _ShowDataState extends State<ShowData> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         title: const Text('Show Data'),
         centerTitle: true,
         actions: [
           GestureDetector(
               onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (_) => const ConversationScreen()));
+              },
+              child: const Icon(Icons.chat_bubble_sharp)),
+          GestureDetector(
+              onTap: () {
                 auth.signOut().then((v) {
+                  // ignore: use_build_context_synchronously
                   Navigator.pushReplacement(context,
                       MaterialPageRoute(builder: (_) => const LoginScreen()));
                 }).onError((Error, v) {
@@ -38,7 +49,7 @@ class _ShowDataState extends State<ShowData> {
                       .toast(Error.toString(), Colors.green, Colors.white);
                 });
               },
-              child: Icon(Icons.logout))
+              child: const Icon(Icons.logout))
         ],
       ),
       body: Column(
@@ -62,10 +73,10 @@ class _ShowDataState extends State<ShowData> {
                                       context,
                                       MaterialPageRoute(
                                           builder: (_) => SinglChatScreen(
-                                            recieverid: snapshot.data!.docs[index]
-                                                ['uid'],
-                                            recievername: snapshot.data!.docs[index]
-                                                ['name'],
+                                                recieverid: snapshot
+                                                    .data!.docs[index]['uid'],
+                                                recievername: snapshot
+                                                    .data!.docs[index]['name'],
                                               )));
                                   print(snapshot.data!.docs[index]['uid']);
                                 },
