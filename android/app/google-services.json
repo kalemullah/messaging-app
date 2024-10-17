@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "583616904561",
+    "project_id": "masseging-a5c9b",
+    "storage_bucket": "masseging-a5c9b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:583616904561:android:72a9e30eff87a92fd78ad0",
+        "android_client_info": {
+          "package_name": "com.example.messaging"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDB8_YKA6tYOt2Ofsql0FxB5AeOnBs5aMI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
