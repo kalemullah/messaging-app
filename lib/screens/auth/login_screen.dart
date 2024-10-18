@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:messaging/custom_widget/custom_button.dart';
 import 'package:messaging/screens/auth/sign_up_screen.dart';
-import 'package:messaging/screens/nav_bar/show_all_user.dart';
+import 'package:messaging/screens/nav_bar/nav_bar.dart';
 import 'package:messaging/utils/popup.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -30,7 +30,7 @@ class _LoginScreenState extends State<LoginScreen> {
             password: passwordController.text.toString().trim())
         .then((v) {
       Navigator.pushReplacement(
-          context, MaterialPageRoute(builder: (context) => const ShowData()));
+          context, MaterialPageRoute(builder: (context) => const NavBar()));
       setState(() {
         isloading = false;
       });
@@ -46,7 +46,6 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
         appBar: AppBar(
           title: const Text('SIgn In'),
           centerTitle: true,

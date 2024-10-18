@@ -38,9 +38,12 @@ class _AllImagesState extends State<AllImages> {
                       children: [
                         Center(
                           child: Card(
-                            child: Image.network(
-                                fit: BoxFit.cover,
-                                snapshot.data!.docs[index]['designImage']),
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(10.r),
+                              child: Image.network(
+                                  fit: BoxFit.cover,
+                                  snapshot.data!.docs[index]['designImage']),
+                            ),
                           ),
                         ),
                         Positioned(

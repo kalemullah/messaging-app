@@ -15,6 +15,7 @@ class UserDetailsScreen extends StatefulWidget {
 class _UserDetailsScreenState extends State<UserDetailsScreen> {
   @override
   Widget build(BuildContext context) {
+    print("this is uid of user ${widget.userid}");
     return Scaffold(
       backgroundColor: const Color(0xffe6c8b4).withOpacity(.8),
       appBar: AppBar(
@@ -120,9 +121,7 @@ class _UserDetailsScreenState extends State<UserDetailsScreen> {
                       StreamBuilder(
                           stream: FirebaseFirestore.instance
                               .collection('design')
-                              .where('createdBy',
-                                  isEqualTo:
-                                      FirebaseAuth.instance.currentUser!.uid)
+                              .where('createdBy', isEqualTo: widget.userid)
                               .snapshots(),
                           builder: (context, snapshot) {
                             if (snapshot.hasError) {
@@ -133,6 +132,8 @@ class _UserDetailsScreenState extends State<UserDetailsScreen> {
                                 child: Text('No Image yet'),
                               );
                             }
+                            print(
+                                'this is snapshot ${snapshot.data!.docs.length}');
                             return SizedBox(
                               height: 345.h,
                               child: GridView.builder(

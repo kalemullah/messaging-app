@@ -102,6 +102,72 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           ),
                         ),
                       ),
+                      StreamBuilder(
+                          stream: FirebaseFirestore.instance
+                              .collection('design')
+                              .where('createdBy',
+                                  isEqualTo:
+                                      FirebaseAuth.instance.currentUser!.uid)
+                              .snapshots(),
+                          builder: (context, snapshot) {
+                            if (snapshot.hasError) {
+                              return const Text('Error');
+                            } else if (!snapshot.hasData ||
+                                snapshot.data!.docs.isEmpty) {
+                              return const Center(
+                                child: Text('No Image yet'),
+                              );
+                            }
+                            print(
+                                'this is snapshot ${snapshot.data!.docs.length}');
+                            return SizedBox(
+                              height: 345.h,
+                              child: GridView.builder(
+                                  itemCount: snapshot.data!.docs.length,
+                                  gridDelegate:
+                                      const SliverGridDelegateWithFixedCrossAxisCount(
+                                          crossAxisCount: 2),
+                                  itemBuilder: (context, index) {
+                                    return Stack(
+                                      children: [
+                                        Center(
+                                          child: Card(
+                                            child: ClipRRect(
+                                              borderRadius:
+                                                  BorderRadius.circular(10.r),
+                                              child: Image.network(
+                                                  fit: BoxFit.cover,
+                                                  snapshot.data!.docs[index]
+                                                      ['designImage']),
+                                            ),
+                                          ),
+                                        ),
+                                        Positioned(
+                                            right: 20.w,
+                                            bottom: 0,
+                                            child: IconButton(
+                                                onPressed: () {
+                                                  FirebaseFirestore.instance
+                                                      .collection('design')
+                                                      .doc(snapshot
+                                                          .data!.docs[index].id)
+                                                      .update({
+                                                    'Likeby':
+                                                        FieldValue.arrayRemove([
+                                                      FirebaseAuth.instance
+                                                          .currentUser!.uid
+                                                    ])
+                                                  });
+                                                },
+                                                icon: const Icon(
+                                                  Icons.favorite,
+                                                  color: Colors.red,
+                                                ))),
+                                      ],
+                                    );
+                                  }),
+                            );
+                          })
                     ],
                   );
                 })

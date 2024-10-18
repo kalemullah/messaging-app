@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:messaging/custom_widget/custom_button.dart';
 import 'package:messaging/screens/auth/login_screen.dart';
+import 'package:messaging/screens/nav_bar/nav_bar.dart';
 import 'package:messaging/screens/nav_bar/show_all_user.dart';
 import 'package:messaging/utils/popup.dart';
 
@@ -41,7 +42,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
       });
       ToastPopUp().toast('Sign Up successful', Colors.green, Colors.white);
       Navigator.pushReplacement(
-          context, MaterialPageRoute(builder: (context) => const ShowData()));
+          context, MaterialPageRoute(builder: (context) => const NavBar()));
 
       setState(() {
         isloading = false;

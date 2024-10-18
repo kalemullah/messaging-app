@@ -24,7 +24,7 @@ class _AddImagesState extends State<AddImages> {
   String url = '';
   void pickImage() async {
     final ImagePicker _picker = ImagePicker();
-    image = await _picker.pickImage(source: ImageSource.camera);
+    image = await _picker.pickImage(source: ImageSource.gallery);
     print('image path ${image!.path}');
     if (image == null) {
       return;
@@ -186,6 +186,8 @@ class _AddImagesState extends State<AddImages> {
                   'Likeby': [],
                 }).then((value) {
                   print('data added');
+                  image = null;
+                  hintext = 'Select Category';
                   setState(() {
                     isdataadded = false;
                   });
@@ -194,7 +196,6 @@ class _AddImagesState extends State<AddImages> {
                     Color(0xff472121),
                     Color(0xffe6c8b4),
                     //navigation to index 0
-                    
                   );
                 });
               },
