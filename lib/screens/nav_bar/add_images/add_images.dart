@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:messaging/custom_widget/custom_button.dart';
+import 'package:messaging/utils/popup.dart';
 
 class AddImages extends StatefulWidget {
   const AddImages({super.key});
@@ -16,7 +17,7 @@ class AddImages extends StatefulWidget {
 }
 
 class _AddImagesState extends State<AddImages> {
-  String hintext = "male";
+  String hintext = "Select Category";
   XFile? image;
   File? imageFile;
   bool isdataadded = false;
@@ -85,7 +86,16 @@ class _AddImagesState extends State<AddImages> {
                         hintext,
                         style: TextStyle(color: Colors.black),
                       ),
-                      items: ['first', 'second'].map((String value) {
+                      items: [
+                        'Back Hand',
+                        'Front Hand',
+                        'Bridal',
+                        'Foot',
+                        'Finger',
+                        'Arm',
+                        'Gol Tikki',
+                        'Eid special'
+                      ].map((String value) {
                         return DropdownMenuItem(
                           value: value,
                           child: Text(
@@ -161,7 +171,7 @@ class _AddImagesState extends State<AddImages> {
 
                   url = await firebaseStorageRef.getDownloadURL();
                 }
-              
+
                 String timestamp =
                     DateTime.now().millisecondsSinceEpoch.toString();
                 FirebaseFirestore.instance
@@ -179,6 +189,13 @@ class _AddImagesState extends State<AddImages> {
                   setState(() {
                     isdataadded = false;
                   });
+                  ToastPopUp().toast(
+                    'Design added succefully ',
+                    Color(0xff472121),
+                    Color(0xffe6c8b4),
+                    //navigation to index 0
+                    
+                  );
                 });
               },
             ),

@@ -292,7 +292,7 @@ class _SinglChatScreenState extends State<SinglChatScreen> {
                     child: Text('No messages yet'),
                   );
                 }
-                // Automatically scroll to the bottom when new messages arrive
+                
                 WidgetsBinding.instance.addPostFrameCallback((_) {
                   _scrollToBottom();
                 });

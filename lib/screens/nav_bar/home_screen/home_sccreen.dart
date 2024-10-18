@@ -1,6 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:messaging/screens/nav_bar/home_screen/category_screen/category_screen_details.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -10,6 +11,16 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  List<String> category = [
+    'Back Hand',
+    'Front Hand',
+    'Bridal',
+    'Foot',
+    'Finger',
+    'Arm',
+    'Gol Tikki',
+    'Eid special'
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -121,16 +132,23 @@ class _HomeScreenState extends State<HomeScreen> {
                 height: 120.h,
                 child: ListView.builder(
                     scrollDirection: Axis.horizontal,
-                    itemCount: 10,
+                    itemCount: category.length,
                     itemBuilder: (BuildContext context, index) {
-                      return SizedBox(
-                        height: 120.h,
-                        width: 120.w,
-                        child: Card(
-                          child: Center(
-                            child: Text(
-                              '1',
-                              style: TextStyle(color: Colors.black),
+                      return GestureDetector(
+                        onTap: (){
+                          Navigator.push(context, MaterialPageRoute(builder: (context)=>CategoryDetails(
+                            category: category[index],
+                          )));
+                        },
+                        child: SizedBox(
+                          height: 120.h,
+                          width: 120.w,
+                          child: Card(
+                            child: Center(
+                              child: Text(
+                                category[index],
+                                style: TextStyle(color: Colors.black),
+                              ),
                             ),
                           ),
                         ),
